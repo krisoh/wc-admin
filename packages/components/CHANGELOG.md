@@ -1,3 +1,7 @@
+# 1.7.0 (Unreleased)
+- Calendar: Expose `isInvalidDate` prop to `DatePicker` to indicated invalid days that are not selectable.
+- Calendar: Expose `isInvalidDate` prop to `DateRange` and remove the `invalidDays` prop.
+
 # 1.6.0
 - Chart component: new props `emptyMessage` and `baseValue`. When an empty message is provided, it will be displayed on top of the chart if there are no values different than `baseValue`.
 - Chart component: remove d3-array dependency.

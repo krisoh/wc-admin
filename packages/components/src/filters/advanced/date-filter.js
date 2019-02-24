@@ -19,6 +19,7 @@ import { isoDateFormat, toMoment } from '@woocommerce/date';
  */
 import DatePicker from '../../calendar/date-picker';
 import { textContent } from './utils';
+import moment from 'moment';
 
 const dateStringFormat = __( 'MMM D, YYYY', 'wc-admin' );
 const dateFormat = __( 'MM/DD/YYYY', 'wc-admin' );
@@ -126,6 +127,10 @@ class DateFilter extends Component {
 		}
 	}
 
+	isInvalidDate( dateString ) {
+		return moment().isBefore( moment( dateString ), 'day' );
+	}
+
 	getFilterInputs() {
 		const { filter } = this.props;
 		const { before, beforeText, beforeError, after, afterText, afterError } = this.state;
@@ -141,7 +146,7 @@ class DateFilter extends Component {
 							error={ afterError }
 							onUpdate={ partial( this.onRangeDateChange, 'after' ) }
 							dateFormat={ dateFormat }
-							invalidDays="none"
+							isInvalidDate={ this.isInvalidDate }
 						/>
 					),
 					before: (
@@ -151,7 +156,7 @@ class DateFilter extends Component {
 							error={ beforeError }
 							onUpdate={ partial( this.onRangeDateChange, 'before' ) }
 							dateFormat={ dateFormat }
-							invalidDays="none"
+							isInvalidDate={ this.isInvalidDate }
 						/>
 					),
 					span: <span className="separator" />,
@@ -166,7 +171,7 @@ class DateFilter extends Component {
 				error={ beforeError }
 				onUpdate={ this.onSingleDateChange }
 				dateFormat={ dateFormat }
-				invalidDays="none"
+				isInvalidDate={ this.isInvalidDate }
 			/>
 		);
 	}
