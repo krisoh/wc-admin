@@ -127,7 +127,7 @@ class DateFilter extends Component {
 		}
 	}
 
-	isInvalidDate( dateString ) {
+	isFutureDate( dateString ) {
 		return moment().isBefore( moment( dateString ), 'day' );
 	}
 
@@ -146,7 +146,7 @@ class DateFilter extends Component {
 							error={ afterError }
 							onUpdate={ partial( this.onRangeDateChange, 'after' ) }
 							dateFormat={ dateFormat }
-							isInvalidDate={ this.isInvalidDate }
+							isInvalidDate={ this.isFutureDate }
 						/>
 					),
 					before: (
@@ -156,7 +156,7 @@ class DateFilter extends Component {
 							error={ beforeError }
 							onUpdate={ partial( this.onRangeDateChange, 'before' ) }
 							dateFormat={ dateFormat }
-							isInvalidDate={ this.isInvalidDate }
+							isInvalidDate={ this.isFutureDate }
 						/>
 					),
 					span: <span className="separator" />,
@@ -171,7 +171,7 @@ class DateFilter extends Component {
 				error={ beforeError }
 				onUpdate={ this.onSingleDateChange }
 				dateFormat={ dateFormat }
-				isInvalidDate={ this.isInvalidDate }
+				isInvalidDate={ this.isFutureDate }
 			/>
 		);
 	}

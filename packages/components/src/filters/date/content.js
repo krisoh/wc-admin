@@ -37,6 +37,10 @@ class DatePickerContent extends Component {
 		}
 	}
 
+	isFutureDate( dateString ) {
+		return moment().isBefore( moment( dateString ), 'day' );
+	}
+
 	render() {
 		const {
 			period,
@@ -92,7 +96,7 @@ class DatePickerContent extends Component {
 										after={ after }
 										before={ before }
 										onUpdate={ onUpdate }
-										isInvalidDate={ dateString => moment().isBefore( moment( dateString ), 'day' ) }
+										isInvalidDate={ this.isFutureDate }
 										focusedInput={ focusedInput }
 										afterText={ afterText }
 										beforeText={ beforeText }

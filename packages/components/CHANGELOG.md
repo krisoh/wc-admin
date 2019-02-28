@@ -1,4 +1,4 @@
-# 1.7.0 (Unreleased)
+# 2.0.0 (Unreleased)
 - Calendar: Expose `isInvalidDate` prop to `DatePicker` to indicated invalid days that are not selectable.
 - Calendar: Expose `isInvalidDate` prop to `DateRange` and remove the `invalidDays` prop.
 
